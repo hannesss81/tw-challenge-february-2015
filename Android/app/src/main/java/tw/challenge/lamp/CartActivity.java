@@ -24,6 +24,7 @@ public class CartActivity  extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cart_activity);
+        Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
 
     }
@@ -59,6 +60,8 @@ public class CartActivity  extends Activity {
                         Toast.makeText(context, "Confirmed!", Toast.LENGTH_LONG);
                         Payment pay = new Payment();
                         pay.execute();
+                        Intent confirmQR = new Intent(getApplicationContext(), ConfirmActivity.class);
+                        startActivity(confirmQR);
                     }
                 });
 
