@@ -125,11 +125,19 @@ dialog.dismiss();
                             validProduct = true;
                             break;
                         case "4011800544515":
-                            product = new Product("Corny", 0.75, "4011800544515");
+                            product = new Product("Corny - kollane", 0.75, "4011800544515");
+                            validProduct = true;
+                            break;
+                        case "4011800530518":
+                            product = new Product("Corny - pruun", 0.75, "4011800530518");
                             validProduct = true;
                             break;
                         case "40822426":
-                            product = new Product("bonaqua", 1.14, "40822426");
+                            product = new Product("Bonaqua", 1.14, "40822426");
+                            validProduct = true;
+                            break;
+                        case "5099206027176":
+                            product = new Product("Logitech m325", 15.28, "5099206027176");
                             validProduct = true;
                             break;
                     }
