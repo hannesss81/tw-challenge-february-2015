@@ -33,7 +33,7 @@ public class CartActivity  extends Activity {
     public void checkOut(View view) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 CartActivity.this);
-        String sum = "Select card to pay " + basket.basketTotalCost();
+        String sum = "Select card to pay " + (double)Math.round(basket.basketTotalCost() * 100) / 100;
         builderSingle.setTitle(sum);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
@@ -59,7 +59,7 @@ public class CartActivity  extends Activity {
                         AlertDialog.Builder builderInner = new AlertDialog.Builder(
                                 CartActivity.this);
                         builderInner.setMessage(strName);
-                        builderInner.setTitle("Confirm payment of " + basket.basketTotalCost());
+                        builderInner.setTitle("Confirm payment of " + (double)Math.round(basket.basketTotalCost() * 100) / 100);
                         builderInner.setPositiveButton("Confirm",
                                 new DialogInterface.OnClickListener() {
 
