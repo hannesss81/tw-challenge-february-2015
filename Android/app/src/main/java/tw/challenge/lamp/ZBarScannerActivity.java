@@ -7,6 +7,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import net.sourceforge.zbar.Config;
@@ -36,6 +37,10 @@ public class ZBarScannerActivity extends Activity implements Camera.PreviewCallb
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mAutoFocusHandler = new Handler();
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+        decorView.setSystemUiVisibility(uiOptions);
 // Create and configure the ImageScanner;
         setupScanner();
 // Create a RelativeLayout container that will hold a SurfaceView,

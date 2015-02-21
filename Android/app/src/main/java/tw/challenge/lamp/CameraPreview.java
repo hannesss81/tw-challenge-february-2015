@@ -49,7 +49,7 @@ class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
         final int height = resolveSize(getSuggestedMinimumHeight(), heightMeasureSpec);
         setMeasuredDimension(width, height);
         if (mSupportedPreviewSizes != null) {
-            mPreviewSize = getOptimalPreviewSize(mSupportedPreviewSizes, width, height);
+            mPreviewSize = getOptimalPreviewSize(mSupportedPreviewSizes, height, width);
         }
     }
     @Override
@@ -61,8 +61,8 @@ class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
             int previewWidth = width;
             int previewHeight = height;
             if (mPreviewSize != null) {
-                previewWidth = mPreviewSize.width;
-                previewHeight = mPreviewSize.height;
+                previewWidth = mPreviewSize.height;
+                previewHeight = mPreviewSize.width;
             }
 // Center the child SurfaceView within the parent.
             if (width * previewHeight > height * previewWidth) {
@@ -136,10 +136,10 @@ class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
         if (mCamera != null) {
 // Now that the size is known, set up the camera parameters and begin
 // the preview.
+            mCamera.setDisplayOrientation(90);
             Camera.Parameters parameters = mCamera.getParameters();
             parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
             requestLayout();
-            mCamera.setDisplayOrientation(90);
             mCamera.setParameters(parameters);
             mCamera.setPreviewCallback(mPreviewCallback);
             mCamera.startPreview();
