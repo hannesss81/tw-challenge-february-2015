@@ -25,11 +25,8 @@ public class CartActivity  extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cart_activity);
-        Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
-        ArrayAdapter<Product> itemsAdapter = new ArrayAdapter<Product>(this, R.layout.itemslist, basket.getProducts());
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(itemsAdapter);
+        Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
     }
 
@@ -119,9 +116,29 @@ dialog.dismiss();
                             product = new Product("Leib", 0.73, "443298717660");
                             validProduct = true;
                             break;
+                        case "123456789012":
+                            product = new Product("Röster", 22.24, "123456789012");
+                            validProduct = true;
+                            break;
+                        case "5678901234567":
+                            product = new Product("Coca-Cola", 0.92, "5678901234567");
+                            validProduct = true;
+                            break;
+                        case "4011800544515":
+                            product = new Product("Corny", 0.75, "4011800544515");
+                            validProduct = true;
+                            break;
+                        case "40822426":
+                            product = new Product("bonaqua", 1.14, "40822426");
+                            validProduct = true;
+                            break;
                     }
                     if (validProduct){
                         basket.addProduct(product);
+                        ItemAdapter adapter = new ItemAdapter(this, basket.getProducts());
+                        ListView listView = (ListView) findViewById(R.id.listView);
+                        listView.setAdapter(adapter);
+
                         Toast.makeText(this, product.getName() + " added to cart" , Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(this, "Unknown barcode" , Toast.LENGTH_SHORT).show();
