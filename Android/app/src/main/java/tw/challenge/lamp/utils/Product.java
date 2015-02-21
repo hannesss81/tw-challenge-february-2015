@@ -26,6 +26,10 @@ public class Product {
         return this.name;
     }
 
+    public double getPrice(){
+        return this.price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

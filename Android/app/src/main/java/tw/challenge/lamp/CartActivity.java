@@ -25,11 +25,8 @@ public class CartActivity  extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cart_activity);
-        Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
-        ArrayAdapter<Product> itemsAdapter = new ArrayAdapter<Product>(this, R.layout.itemslist, basket.getProducts());
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(itemsAdapter);
+        Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
     }
 
@@ -99,6 +96,10 @@ public class CartActivity  extends Activity {
                     }
                     if (validProduct){
                         basket.addProduct(product);
+                        ItemAdapter adapter = new ItemAdapter(this, basket.getProducts());
+                        ListView listView = (ListView) findViewById(R.id.listView);
+                        listView.setAdapter(adapter);
+
                         Toast.makeText(this, product.getName() + " added to cart" , Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(this, "Unknown barcode" , Toast.LENGTH_SHORT).show();
