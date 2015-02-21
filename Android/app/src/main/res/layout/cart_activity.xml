@@ -9,9 +9,10 @@
         android:layout_height="wrap_content"
         android:text="Pay"
         android:id="@+id/checkoutBtn"
+        android:onClick="checkOut"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="checkOut"/>
+        android:layout_toLeftOf="@+id/imageView3"
+        android:layout_toStartOf="@+id/imageView3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,5 +32,15 @@
         android:layout_below="@+id/checkoutBtn"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/scanBtn" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/shopping102"
+        android:layout_above="@+id/listView" />
 
 </RelativeLayout>

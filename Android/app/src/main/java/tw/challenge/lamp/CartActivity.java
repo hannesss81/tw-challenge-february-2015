@@ -27,7 +27,7 @@ public class CartActivity  extends Activity {
 
     }
 
-    private void checkOut(View view) {
+    public void checkOut(View view) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 CartActivity.this);
         String sum = "Select card to pay " + basket.basketTotalCost();
@@ -85,7 +85,7 @@ public class CartActivity  extends Activity {
         builderSingle.show();
     }
 
-    private void startScan(View view) {
+    public void startScan(View view) {
         Intent intent = new Intent(this, ScanActivity.class);
         startActivityForResult(intent, 1);
     }

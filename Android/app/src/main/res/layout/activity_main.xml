@@ -11,20 +11,32 @@
         android:layout_height="wrap_content"
         android:text="Start Shopping"
         android:id="@+id/btn_start"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="180dp"
         android:textSize="30dp"
-        android:onClick="scanInitial"/>
+        android:onClick="scanInitial"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:layout_above="@+id/btn_start"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40dp"
-        android:text="Welcome, User" />
+        android:text="Welcome, User"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/shopping30"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
+        android:layout_marginTop="61dp"
+        android:layout_below="@+id/btn_start"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
