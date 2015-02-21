@@ -19,8 +19,10 @@ public class Cache {
         resp.add(new Product("Leib", 0.73, "443298717660"));
         resp.add(new Product("Röster", 22.24, "123456789012"));
         resp.add(new Product("Coca-Cola", 0.92, "5678901234567"));
-        resp.add(new Product("Corny", 0.75, "4011800544515"));
-        resp.add(new Product("bonaqua", 1.14, "40822426"));
+        resp.add(new Product("Corny - kollane", 0.75, "4011800544515"));
+        resp.add(new Product("Bonaqua", 1.14, "40822426"));
+        resp.add(new Product("Logitech m325", 15.28, "5099206027176"));
+        resp.add(new Product("Corny - pruun", 0.75, "4011800530518"));
         return resp;
     }
 }
