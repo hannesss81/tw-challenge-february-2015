@@ -11,6 +11,6 @@ public class ConfirmActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.confirm_activity);
-        Toast.makeText(this, "Confirmed!", Toast.LENGTH_LONG);
+        Toast.makeText(this, "Confirmed!", Toast.LENGTH_LONG).show();
 
 }}
