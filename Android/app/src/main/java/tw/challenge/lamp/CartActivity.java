@@ -93,6 +93,22 @@ public class CartActivity  extends Activity {
                             product = new Product("Leib", 0.73, "443298717660");
                             validProduct = true;
                             break;
+                        case "123456789012":
+                            product = new Product("Röster", 22.24, "123456789012");
+                            validProduct = true;
+                            break;
+                        case "5678901234567":
+                            product = new Product("Coca-Cola", 0.92, "5678901234567");
+                            validProduct = true;
+                            break;
+                        case "4011800544515":
+                            product = new Product("Corny", 0.75, "4011800544515");
+                            validProduct = true;
+                            break;
+                        case "40822426":
+                            product = new Product("bonaqua", 1.14, "40822426");
+                            validProduct = true;
+                            break;
                     }
                     if (validProduct){
                         basket.addProduct(product);
