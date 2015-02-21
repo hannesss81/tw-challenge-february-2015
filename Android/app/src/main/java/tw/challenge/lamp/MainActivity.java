@@ -16,6 +16,8 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Payment pay = new Payment();
+        pay.execute();
         launchScanner();
 
     }
@@ -40,8 +42,6 @@ public class MainActivity extends Activity {
             case ZBAR_QR_SCANNER_REQUEST:
                 if (resultCode == RESULT_OK) {
                     Toast.makeText(this, "Scan Result = " + data.getStringExtra(ZBarConstants.SCAN_RESULT), Toast.LENGTH_SHORT).show();
-
-
                 }
                 break;
         }
