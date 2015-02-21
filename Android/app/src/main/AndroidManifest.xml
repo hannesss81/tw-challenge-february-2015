@@ -33,6 +33,8 @@
             android:name=".CartActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ConfirmActivity"
+            android:screenOrientation="portrait"></activity>
 
 
     </application>
