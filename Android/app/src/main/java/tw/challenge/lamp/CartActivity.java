@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import tw.challenge.lamp.utils.Basket;
@@ -26,6 +27,9 @@ public class CartActivity  extends Activity {
         setContentView(R.layout.cart_activity);
         Toast.makeText(this,"Welcome to Prisma", Toast.LENGTH_SHORT);
 
+        ArrayAdapter<Product> itemsAdapter = new ArrayAdapter<Product>(this, R.layout.itemslist, basket.getProducts());
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(itemsAdapter);
 
     }
 

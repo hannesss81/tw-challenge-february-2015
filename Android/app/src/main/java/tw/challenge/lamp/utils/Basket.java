@@ -1,5 +1,7 @@
 package tw.challenge.lamp.utils;
 
+import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
 
 /**
@@ -10,6 +12,10 @@ public class Basket {
     ArrayList<Product> products = new ArrayList<>();
     public Basket() {
         products = new ArrayList<>();
+    }
+
+    public ArrayList<Product> getProducts() {
+        return this.products;
     }
 
     public void addProduct(Product p) {
