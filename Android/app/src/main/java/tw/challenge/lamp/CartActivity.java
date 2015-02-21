@@ -2,6 +2,7 @@ package tw.challenge.lamp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import tw.challenge.lamp.utils.Basket;
+import tw.challenge.lamp.utils.Product;
 
 
 public class CartActivity  extends Activity {
@@ -28,19 +30,32 @@ public class CartActivity  extends Activity {
     private void checkOut(View view) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 CartActivity.this);
-        builderSingle.setTitle("Select One Name:-");
+        String sum = "Select card to pay " + basket.basketTotalCost();
+        builderSingle.setTitle(sum);
+
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 CartActivity.this,
                 android.R.layout.select_dialog_singlechoice);
         arrayAdapter.add("**** **** **** 2412");
         arrayAdapter.add("**** **** **** 4123");
         arrayAdapter.add("**** **** **** 1337");
-        builderSingle.setNegativeButton("cancel",
+        builderSingle.setNegativeButton("Cancel",
                 new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                    }
+                });
+        builderSingle.setNegativeButton("Pay",
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Intent intent = new Intent(this, ConfirmActivity.class);
+                        //startActivity(intent);
+                        Context context = getApplicationContext();
+                        Toast.makeText(context, "Confirmed!", Toast.LENGTH_LONG);
                     }
                 });
 
@@ -80,8 +95,26 @@ public class CartActivity  extends Activity {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
+                    String itemBarCode = data.getStringExtra("SCAN_RESULT");
+                    Product product = new Product("Lamp", 1337, "133413371337");
 
-                    Toast.makeText(this, "Welcome" , Toast.LENGTH_SHORT).show();
+                    boolean validProduct = false;
+                    switch (itemBarCode){
+                        case "442141253626":
+                            product = new Product("Piim", 0.59, "442141253626");
+                            validProduct = true;
+                            break;
+                        case "443298717660":
+                            product = new Product("Leib", 0.73, "443298717660");
+                            validProduct = true;
+                            break;
+                    }
+                    if (validProduct){
+                        basket.addProduct(product);
+                        Toast.makeText(this, product.getName() + " added to cart" , Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Unknown barcode" , Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
         }

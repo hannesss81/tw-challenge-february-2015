@@ -22,6 +22,10 @@ public class Product {
         this.count = 1;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

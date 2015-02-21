@@ -15,8 +15,8 @@ public class Cache {
 
     public ArrayList<Product> initializeCache() {
         ArrayList<Product> resp = new ArrayList<>();
-        resp.add(new Product("Piim", 0.59, "111111111111"));
-        resp.add(new Product("Leib", 0.73, "222222222222"));
+        resp.add(new Product("Piim", 0.59, "442141253626"));
+        resp.add(new Product("Leib", 0.73, "443298717660"));
         resp.add(new Product("Röster", 22.24, "123456789012"));
         resp.add(new Product("Coca-Cola", 0.92, "5678901234567"));
         return resp;
