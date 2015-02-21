@@ -53,19 +53,42 @@ public class CartActivity  extends Activity {
                         dialog.dismiss();
                     }
                 });
-        builderSingle.setPositiveButton("Pay",
+        builderSingle.setAdapter(arrayAdapter,
                 new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Intent intent = new Intent(this, ConfirmActivity.class);
-                        //startActivity(intent);
-                        Context context = getApplicationContext();
-                        Toast.makeText(context, "Confirmed!", Toast.LENGTH_LONG);
-                        Payment pay = new Payment();
-                        pay.execute();
-                        Intent confirmQR = new Intent(getApplicationContext(), ConfirmActivity.class);
-                        startActivity(confirmQR);
+                        String strName = arrayAdapter.getItem(which);
+                        AlertDialog.Builder builderInner = new AlertDialog.Builder(
+                                CartActivity.this);
+                        builderInner.setMessage(strName);
+                        builderInner.setTitle("Confirm payment of " + basket.basketTotalCost());
+                        builderInner.setPositiveButton("Confirm",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(
+                                            DialogInterface dialog,
+                                            int which) {
+                                        Payment pay = new Payment();
+                                        pay.execute();
+                                        Intent confirmQR = new Intent(getApplicationContext(), ConfirmActivity.class);
+                                        startActivity(confirmQR);
+                                       ;
+                                    }
+                                });
+                        builderInner.setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(
+                                            DialogInterface dialog,
+                                            int which) {
+dialog.dismiss();
+                                        ;
+                                    }
+                                });
+                        builderInner.show();
                     }
                 });
 
