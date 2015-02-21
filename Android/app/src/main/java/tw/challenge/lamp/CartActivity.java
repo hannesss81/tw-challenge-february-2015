@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -47,7 +48,7 @@ public class CartActivity  extends Activity {
                         dialog.dismiss();
                     }
                 });
-        builderSingle.setNegativeButton("Pay",
+        builderSingle.setPositiveButton("Pay",
                 new DialogInterface.OnClickListener() {
 
                     @Override
@@ -56,6 +57,8 @@ public class CartActivity  extends Activity {
                         //startActivity(intent);
                         Context context = getApplicationContext();
                         Toast.makeText(context, "Confirmed!", Toast.LENGTH_LONG);
+                        Payment pay = new Payment();
+                        pay.execute();
                     }
                 });
 
@@ -96,15 +99,16 @@ public class CartActivity  extends Activity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     String itemBarCode = data.getStringExtra("SCAN_RESULT");
+                    Log.i("MEIE", itemBarCode);
                     Product product = new Product("Lamp", 1337, "133413371337");
 
                     boolean validProduct = false;
                     switch (itemBarCode){
-                        case "442141253626":
+                        case "4421412536264":
                             product = new Product("Piim", 0.59, "442141253626");
                             validProduct = true;
                             break;
-                        case "443298717660":
+                        case "4432987176601":
                             product = new Product("Leib", 0.73, "443298717660");
                             validProduct = true;
                             break;

@@ -25,9 +25,11 @@ public class ScanActivity extends Activity implements Camera.PreviewCallback, ZB
     static {
         System.loadLibrary("iconv");
     }
+    boolean isTrue = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isTrue = getIntent().getBooleanExtra("katse", false);
         if(!isCameraAvailable()) {
 // Cancel request if there is no rear-facing camera.
             cancelRequest();
@@ -118,10 +120,15 @@ public class ScanActivity extends Activity implements Camera.PreviewCallback, ZB
             for (Symbol sym : syms) {
                 String symData = sym.getData();
                 if (!TextUtils.isEmpty(symData)) {
-                    Intent dataIntent = new Intent(this, CartActivity.class);
-                    dataIntent.putExtra(SCAN_RESULT, symData);
-                    dataIntent.putExtra(SCAN_RESULT_TYPE, sym.getType());
-                    startActivity(dataIntent);
+                    Intent dataIntent = new Intent();
+                    if (!isTrue) {
+                        dataIntent.putExtra(SCAN_RESULT, symData);
+                        dataIntent.putExtra(SCAN_RESULT_TYPE, 1);
+                        setResult(Activity.RESULT_OK, dataIntent);
+                    } else {
+                        dataIntent = new Intent(this, CartActivity.class);
+                        startActivity(dataIntent);
+                    }
                     finish();
                     break;
                 }

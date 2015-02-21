@@ -7,4 +7,4 @@ import android.os.Bundle;
 public class ConfirmActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         
-}
+}}

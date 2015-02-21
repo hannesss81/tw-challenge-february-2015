@@ -19,9 +19,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        Payment pay = new Payment();
-        pay.execute();
-
 
     }
     public void scanInitial(View v){
@@ -30,6 +27,7 @@ public class MainActivity extends Activity {
     public void launchScanner() {
         if (isCameraAvailable()) {
             Intent intent = new Intent(this, ScanActivity.class);
+            intent.putExtra("katse", true);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Rear Facing Camera Unavailable", Toast.LENGTH_SHORT).show();
@@ -40,17 +38,6 @@ public class MainActivity extends Activity {
     public boolean isCameraAvailable() {
         PackageManager pm = getPackageManager();
         return pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case ZBAR_SCANNER_REQUEST:
-            case ZBAR_QR_SCANNER_REQUEST:
-                if (resultCode == RESULT_OK) {
-                    Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
     }
 }
 
