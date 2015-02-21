@@ -15,8 +15,8 @@ import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
-public class ZBarScannerActivity extends Activity implements Camera.PreviewCallback, ZBarConstants {
-    private static final String TAG = "ZBarScannerActivity";
+public class ScanActivity extends Activity implements Camera.PreviewCallback, ZBarConstants {
+    private static final String TAG = "ScanActivity";
     private CameraPreview mPreview;
     private Camera mCamera;
     private ImageScanner mScanner;
@@ -118,10 +118,10 @@ public class ZBarScannerActivity extends Activity implements Camera.PreviewCallb
             for (Symbol sym : syms) {
                 String symData = sym.getData();
                 if (!TextUtils.isEmpty(symData)) {
-                    Intent dataIntent = new Intent();
+                    Intent dataIntent = new Intent(this, CartActivity.class);
                     dataIntent.putExtra(SCAN_RESULT, symData);
                     dataIntent.putExtra(SCAN_RESULT_TYPE, sym.getType());
-                    setResult(Activity.RESULT_OK, dataIntent);
+                    startActivity(dataIntent);
                     finish();
                     break;
                 }

@@ -26,9 +26,10 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ZBarScannerActivity"
+            android:name=".ScanActivity"
             android:screenOrientation="portrait">
         </activity>
+
 
     </application>
 
