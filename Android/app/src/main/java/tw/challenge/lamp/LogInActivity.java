@@ -31,14 +31,14 @@ public class LogInActivity extends Activity {
                 String username = ((EditText) findViewById(R.id.username)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password)).getText().toString();
                 Context context = getApplicationContext();
-                if(passwords.get(usernames.indexOf(username)) == password) {
+                if(passwords.get(usernames.indexOf(username)).equals(password)) {
                     //successful login
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                 } else {
                     //failed...
 
-                    Toast.makeText(context, "Invalid username or password", Toast.LENGTH_LONG);
+                    Toast.makeText(context, "Invalid username or password", Toast.LENGTH_LONG).show();
                 }
             }
         });
