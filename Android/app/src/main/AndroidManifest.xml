@@ -29,6 +29,10 @@
             android:name=".ScanActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".CartActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
 
     </application>
